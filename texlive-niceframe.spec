@@ -1,3 +1,9 @@
+# revision 24120
+# category Package
+# catalog-ctan /macros/latex/contrib/niceframe
+# catalog-date 2011-06-16 20:35:20 +0200
+# catalog-license lppl
+# catalog-version 1.1c
 Name:		texlive-niceframe
 Version:	1.1c
 Release:	1
@@ -54,6 +60,7 @@ fonts are available separately in Type 1 format.
 %doc %{_texmfdistdir}/source/latex/niceframe/niceframe.drv
 %doc %{_texmfdistdir}/source/latex/niceframe/niceframe.dtx
 %doc %{_texmfdistdir}/source/latex/niceframe/niceframe.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -64,3 +71,5 @@ fonts are available separately in Type 1 format.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
