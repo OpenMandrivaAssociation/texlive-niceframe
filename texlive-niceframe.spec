@@ -6,7 +6,7 @@
 # catalog-version 1.1c
 Name:		texlive-niceframe
 Version:	1.1c
-Release:	9
+Release:	10
 Summary:	Support for fancy frames
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/niceframe
