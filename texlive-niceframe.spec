@@ -1,6 +1,6 @@
 Name:		texlive-niceframe
 Version:	36086
-Release:	1
+Release:	2
 Summary:	Support for fancy frames
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/niceframe
