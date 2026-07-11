@@ -1,57 +1,23 @@
-Name:		texlive-niceframe
-Version:	36086
-Release:	2
+%global tl_name niceframe
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.1c
+Release:	%{tl_revision}.1
 Summary:	Support for fancy frames
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/niceframe
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/niceframe.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package defines means of drawing frames around boxes, using
-dingbat fonts. Some (Metafont) font sources are included; the
-fonts are available separately in Type 1 format.
+The package defines means of drawing frames around boxes, using dingbat
+fonts. Some (Metafont) font sources are included; the fonts are
+available separately in Type 1 format.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/fonts/source/public/niceframe/karta.mf
-%{_texmfdistdir}/fonts/source/public/niceframe/karta15.mf
-%{_texmfdistdir}/fonts/source/public/niceframe/umrand.mf
-%{_texmfdistdir}/fonts/source/public/niceframe/umranda.mf
-%{_texmfdistdir}/fonts/source/public/niceframe/umrandb.mf
-%{_texmfdistdir}/fonts/tfm/public/niceframe/karta15.tfm
-%{_texmfdistdir}/fonts/tfm/public/niceframe/umranda.tfm
-%{_texmfdistdir}/fonts/tfm/public/niceframe/umrandb.tfm
-%{_texmfdistdir}/tex/latex/niceframe/niceframe.sty
-%doc %{_texmfdistdir}/doc/latex/niceframe/dingbat.mf
-%doc %{_texmfdistdir}/doc/latex/niceframe/example.tex
-%doc %{_texmfdistdir}/doc/latex/niceframe/niceframe.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/niceframe/niceframe.drv
-%doc %{_texmfdistdir}/source/latex/niceframe/niceframe.dtx
-%doc %{_texmfdistdir}/source/latex/niceframe/niceframe.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
